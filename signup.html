@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SecureVault — Sign Up</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+<div class="auth-page">
+  
+  <!-- ── Left decorative panel ── -->
+  <aside class="auth-panel">
+    <div class="brand">
+      <div class="brand-icon"><i class="fas fa-shield-halved"></i></div>
+      <div class="brand-name">Secure<em>Vault</em></div>
+      <div class="brand-sub">Your passwords, protected forever.</div>
+    </div>
+ 
+    <div class="feature-list">
+      <div class="feature-item">
+        <div class="f-icon"><i class="fas fa-lock"></i></div>
+        <div>
+          <div class="f-title">Locally Encrypted</div>
+          <div class="f-desc">All credentials stay on your device. Nothing is ever sent to any server.</div>
+        </div>
+      </div>
+      <div class="feature-item">
+        <div class="f-icon"><i class="fas fa-layer-group"></i></div>
+        <div>
+          <div class="f-title">Unlimited Entries</div>
+          <div class="f-desc">Store passwords for any site, app, or game — no limits, no subscriptions.</div>
+        </div>
+      </div>
+      <div class="feature-item">
+        <div class="f-icon"><i class="fas fa-eye-slash"></i></div>
+        <div>
+          <div class="f-title">Always Masked</div>
+          <div class="f-desc">Passwords are hidden by default. Reveal only when you need them.</div>
+        </div>
+      </div>
+      <div class="feature-item">
+        <div class="f-icon"><i class="fas fa-bolt"></i></div>
+        <div>
+          <div class="f-title">Instant Access</div>
+          <div class="f-desc">Search, copy, and reveal credentials in one click from your dashboard.</div>
+        </div>
+      </div>
+    </div>
+ 
+    <div class="panel-footer">
+      100% local &nbsp;·&nbsp; No tracking &nbsp;·&nbsp; No cloud &nbsp;·&nbsp; Free forever
+    </div>
+  </aside>
+ 
+  <!-- ── Right form area ── -->
+  <main class="auth-form-area">
+    <div class="form-card">
+      <div class="form-title">Create your account.</div>
+      <div class="form-sub">Join thousands securing their passwords.</div>
+ 
+      <div class="form-switch">
+        Already have an account? <a href="login.html">Sign in here</a>
+      </div>
+ 
+      <form id="signupForm" novalidate>
+ 
+        <div class="field">
+          <label class="field-label" for="su_name">Full name</label>
+          <div class="field-wrap">
+            <input
+              class="field-input" type="text" id="su_name"
+              placeholder="John Doe" autocomplete="name" required>
+            <i class="fas fa-user field-icon"></i>
+          </div>
+        </div>
+ 
+        <div class="field">
+          <label class="field-label" for="su_email">Email address</label>
+          <div class="field-wrap">
+            <input
+              class="field-input" type="email" id="su_email"
+              placeholder="you@example.com" autocomplete="email" required>
+            <i class="fas fa-envelope field-icon"></i>
+          </div>
+        </div>
+ 
+        <div class="field">
+          <label class="field-label" for="su_pw">Master password</label>
+          <div class="field-wrap pw-wrap">
+            <input
+              class="field-input" type="password" id="su_pw"
+              placeholder="Create a password" autocomplete="new-password" required>
+            <i class="fas fa-lock field-icon"></i>
+            <button class="pw-eye" type="button" onclick="toggleEye('su_pw', this)" tabindex="-1">
+              <i class="fas fa-eye"></i>
+            </button>
+          </div>
+        </div>
+ 
+        <div class="field">
+          <label class="field-label" for="su_pw2">Confirm password</label>
+          <div class="field-wrap pw-wrap">
+            <input
+              class="field-input" type="password" id="su_pw2"
+              placeholder="Confirm your password" autocomplete="new-password" required>
+            <i class="fas fa-lock field-icon"></i>
+            <button class="pw-eye" type="button" onclick="toggleEye('su_pw2', this)" tabindex="-1">
+              <i class="fas fa-eye"></i>
+            </button>
+          </div>
+        </div>
+ 
+        <button class="submit-btn" type="submit">
+          <i class="fas fa-user-plus"></i>
+          Create Account
+        </button>
+ 
+      </form>
+    </div>
+  </main>
+</div>
+ 
+<!-- Toast -->
+<div class="toast" id="toast"></div>
+ 
+<script src="auth.js"></script>
+<script>
+  /* Wire form submit */
+  document.getElementById('signupForm').addEventListener('submit', handleSignup);
+ 
+  /* Enter key shortcut */
+  document.getElementById('su_pw2').addEventListener('keydown', e => {
+    if (e.key === 'Enter') handleSignup(e);
+  });
+</script>
+</body>
+</html>
